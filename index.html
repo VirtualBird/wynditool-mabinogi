@@ -8,6 +8,8 @@
         <header>
             <div class="container">
                 <h1>WyndiTools Cookbook Helper</h1>
+                <p class="italic">(site is still under construction and missing cool features please understand whoa nelly)</p>
+                <p>~Wyndia</p>
             </div>
         </header>
         <nav></nav>
@@ -16,24 +18,29 @@
                 <div class="item-search-div">
                     
                     <div class="item-search-options">
+                        <p>Search Options:</p>
                         <input type="checkbox" id="by-name" checked>
-                        <label for="by-name">Search by name</label>
+                        <label for="by-name">By name</label>
                         <input type="checkbox" id="by-ingredient">
-                        <label for="by-ingredient">Search by ingredient</label>
+                        <label for="by-ingredient">By ingredient</label>
+                        <div>
+                            <input type="checkbox" id="purchaseable-item" disabled>
+                            <label for="purchaseable-item">placeholder</label>
+                        </div>
                     </div>
 
-                        <div>
-                        <label for="item-search">Item Name</label>
+                    <div id="item-search-input" class="item-search-input">
+                        <label for="item-search">Item Search</label>
                         <input type="text" id="item-search">
                     </div>
                 </div>
                 <div class="item-container">
                     <ul id="item-list" class="item-list"></ul>
                     <div id="item-details" class="item-details"></div>
-                    <div id="item-selected-details" class="item-selected-details"></div>
+                    <div id="item-selected-details" class="item-selected-details hidden"></div>
                 </div>
                 <div class="ingredients-container">
-                    <ul id="item-base-ingredients-list" class="hidden"></ul>
+                    <ul id="item-base-ingredients-list" class="hidden item-base-ingredients-list"></ul>
                     <div id="item-nested-ingredients-list" class="item-nested-ingredients-list"></div>
                 </div>
             </div>

@@ -20,6 +20,7 @@ document.addEventListener('click', function(e){
     if (e.target.classList.contains('search-name') && e.target.dataset.name)
     {
         displayItem(e.target.dataset.name)
+        document.getElementById("item-selected-details").classList.remove("hidden")
     }
     else if (e.target.dataset.name)
     {
@@ -307,11 +308,11 @@ function getBaseIngredientsListHtml(listObj)
 {
     let listHtml = ''
 
-    listHtml += `<p>Base Ingredients</p>`
+    listHtml += `<h2>Base Ingredients</h2>`
 
     for (const name in listObj){
         const quantity = listObj[name]
-        listHtml += `<li>${quantity}x <span>${name}</span></li>`
+        listHtml += `<li data-name="${name}">${quantity}x ${name}</li>`
     }
 
     return listHtml
@@ -481,6 +482,17 @@ function updateSearch()
     // const list = updateItemList(this.value)
     const list = updateItemList(itemSearchEl.value)
 
+    const searchByName = document.getElementById("by-name").checked
+    const searchByIngredient = document.getElementById("by-ingredient").checked
+
+    if (!searchByName && !searchByIngredient)
+    {
+        const alertMessageStr = "You should probably check a search option..."
+
+        itemListEl.innerHTML = `<p>${alertMessageStr}</p>`
+        return
+    }
+
     if(list)
     {
         const listHTML = list.map(function(item){
@@ -491,10 +503,15 @@ function updateSearch()
         }).join('')
 
         itemListEl.innerHTML = listHTML
+
+        if (!listHTML)
+        {
+            itemListEl.innerHTML = '<p> No Results... </p>'
+        }
     }
     else
     {
-        itemListEl.innerHTML = ''
+        itemListEl.innerHTML = '<p>Search field empty</p>'
     }
 }
 
@@ -727,3 +744,5 @@ function isIngredientRankHigherThanMainDish(mainRank, ingredientRank)
 
     return ingredientValue > mainValue
 }
+
+updateSearch()

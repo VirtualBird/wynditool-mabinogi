@@ -30,7 +30,9 @@ li{
     margin-bottom: 1rem;
 }
 
-
+.item-search-input{
+    margin-top: 1rem;
+}
 
 .item-nested-ingredients-list{
     text-align: left;
@@ -53,11 +55,14 @@ li{
     transition: 0.3s
 }
 
-.item-nested-ingredients-list li div:hover{
+.item-nested-ingredients-list li div:hover,
+.item-base-ingredients-list li:hover{
     color: #22aaaa;
     cursor: pointer;
     transition: 0.1s
 }
+
+
 
 .item-nested-ingredients-list ul {
     margin-left: 0rem;
@@ -87,10 +92,13 @@ li{
     margin-left: 2rem;
 }
 
-#item-base-ingredients-list{
-    border: 1px solid green;
+.item-base-ingredients-list{
+    text-align: left;
 }
 
+.item-base-ingredients-list li{
+list-style: none;
+}
 
 .container{
     max-width: 800px;
@@ -145,6 +153,8 @@ li{
     overflow-y: auto;
 }
 
+
+
 .hidden{
     display: none;
 }
@@ -162,8 +172,13 @@ li{
 }
 
 .ingredients-container{
+    margin-top: 2rem;
     display: flex;
     flex-direction: column;
+}
+
+.italic{
+    font-style: italic;
 }
 
 /* screen smaller */
