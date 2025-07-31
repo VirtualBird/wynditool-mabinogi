@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Wynditools</title>
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <h1>WyndiTools Cookbook Helper</h1>
+            </div>
+        </header>
+        <nav></nav>
+        <main id="main">
+            <div class="container">
+                <div class="item-search-div">
+                    
+                    <div class="item-search-options">
+                        <input type="checkbox" id="by-name" checked>
+                        <label for="by-name">Search by name</label>
+                        <input type="checkbox" id="by-ingredient">
+                        <label for="by-ingredient">Search by ingredient</label>
+                    </div>
+
+                        <div>
+                        <label for="item-search">Item Name</label>
+                        <input type="text" id="item-search">
+                    </div>
+                </div>
+                <div class="item-container">
+                    <ul id="item-list" class="item-list"></ul>
+                    <div id="item-details" class="item-details"></div>
+                    <div id="item-selected-details" class="item-selected-details"></div>
+                </div>
+                <div class="ingredients-container">
+                    <ul id="item-base-ingredients-list" class="hidden"></ul>
+                    <div id="item-nested-ingredients-list" class="item-nested-ingredients-list"></div>
+                </div>
+            </div>
+        </main>
+        <footer>
+
+        </footer>
+        <script src="index.js" type="module"></script>
+    </body>
+</html>
