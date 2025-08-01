@@ -519,9 +519,12 @@ function updateSearch()
     if(list)
     {
         const listHTML = list.map(function(item){
+
+            // Warning - item names that contain double quotes will break. Rewrite with escaping/DOM functions if needed
+            
             return `<li class="search-list">
-            <div class="search-method" data-name='${item.name}'>${item.method ?? ''}</div> 
-            <div class="search-name" data-name='${item.name}'>${item.name}</div>
+            <div class="search-method" data-name="${item.name}">${item.method ?? ''}</div> 
+            <div class="search-name" data-name="${item.name}">${item.name}</div>
             </li>`
         }).join('')
 
