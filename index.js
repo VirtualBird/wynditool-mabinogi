@@ -15,12 +15,13 @@ checkboxByIngredient.addEventListener('change', updateSearch)
 document.addEventListener('click', function(e){
     // if (e.target.classList.contains('search-name'))
     // {
-    //     displayItem(e.target.textContent)
+    //     displayMainItem(e.target.textContent)
     // }
     if (e.target.classList.contains('search-name') && e.target.dataset.name)
     {
-        displayItem(e.target.dataset.name)
+        displayMainItem(e.target.dataset.name)
         document.getElementById("item-selected-details").classList.remove("hidden")
+        document.getElementById("cooking-window-mockup").classList.remove("hidden")
     }
     else if (e.target.dataset.name)
     {
@@ -30,8 +31,9 @@ document.addEventListener('click', function(e){
     console.log(e.target)
 })
 
+
 // Displays the details of the selected item
-function displayItem(itemName)
+function displayMainItem(itemName)
 {
     let detailsHTML = ''
     if (itemName)
@@ -68,14 +70,35 @@ function displayItem(itemName)
             }
         }
 
-        
-        if (itemObj?.ingredients)
+        //  If recipe parameter exists
+        if (itemObj?.recipe)
+        {
+            const recipeHtml = itemObj.recipe.map(function(item){
+                return `<li>${item.name} (${item.percent}%)</li>`
+            }).join('')
+
+            detailsHTML +=  `
+                <div>
+                    <p>Main Ingredients</p>
+                    <ul>${recipeHtml}</ul>
+                </div>`
+
+            const percentArr = itemObj.recipe.map(function(item){
+                return item.percent
+            })
+
+            setCookingBarPercentages(percentArr[0], percentArr[1], percentArr[2])
+        }
+        //  fallback to old ingredients code
+        else if (itemObj?.ingredients)
         {
             detailsHTML +=  `
                             <div>
                             <p>Main Ingredients</p>
                             <p>${itemObj.ingredients}</p>
                             </div>`
+
+            setCookingBarPercentages(0)
         }
 
         if (itemObj?.purchase)
@@ -574,6 +597,18 @@ function updateItemList(item)
 function checkBaseIngredient(obj, ingredient)
 {
     console.log(obj)
+}
+
+
+function setCookingBarPercentages(percenta, percentb = 0, percentc = 0)
+{
+    const percentAEl = document.getElementById("mockup-pct1")
+    const percentBEl = document.getElementById("mockup-pct2")
+    const percentCEl = document.getElementById("mockup-pct3")
+
+    percentAEl.style.width = `${percenta}%`
+    percentBEl.style.width = `${percentb}%`
+    percentCEl.style.width = `${percentc}%`
 }
 
 function getMethodbyCookingRank(cookingRank)

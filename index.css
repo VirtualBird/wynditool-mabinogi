@@ -100,6 +100,113 @@ li{
 list-style: none;
 }
 
+.cooking-window-mockup{
+    
+    display: block;
+}
+
+.mockup-recipe-window{
+    position: relative;
+}
+
+.mockup-ingredients-window{
+    height: 156px;
+    width: 351px;
+    border: #4791b2 1px solid;
+    background-color: #366c8c;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.mockup-main-ingredient{
+    height: 73px;
+    width: 69px;
+    border: #193341 2px solid;
+    border-radius: 3px;
+    border-bottom: none;
+    margin-top: 30px;
+    background-color: #35646a;
+    /* margin-left: -1px; */
+    /* margin-right: 2px; */
+}
+
+.mockup-ingredient{
+    height: 97px;
+    width: 71px;
+    margin-top: 8px;
+    border: #42515a 1px solid;
+
+    border-bottom: #23313a solid 1px;
+    border-right: #23313a solid 1px;
+}
+
+.mockup-cooking-bar{
+    position: absolute;
+    width: 243px;
+    height: 8px;
+    border: solid 1px #87969f;
+    background-color: #c1d0d9;
+    bottom: 6px;
+    left: 96px;
+    display:flex;
+}
+
+.mockup-overlay-bar{
+    /* position: absolute; */
+    
+    display:flex;
+    width: 100%;
+}
+
+.mockup-pct1{
+    background-color: red;
+    height: 8px;
+    width: 0%;
+        &:hover{
+        background-color: lightcoral;
+    }
+}
+.mockup-pct2{
+    background-color: green;
+    height: 8px;
+    width: 0%;
+        &:hover{
+        background-color: lightgreen;
+    }
+}
+.mockup-pct3{
+    background-color: blue;
+    height: 8px;
+    width: 0%;
+
+    &:hover{
+        background-color: lightblue;
+    }
+}
+.mockup-add-btn{
+    width: 74px;
+    height: 25px;
+    margin-top: 3px;
+    border: 1px solid #194c8a;
+    background-color: #438eb6;
+    color: white;
+    text-shadow: -1px -1px 0 #2a5971,  /* Top-left shadow */
+                     1px -1px 0 #2a5971,   /* Top-right shadow */
+                     -1px 1px 0 #2a5971,   /* Bottom-left shadow */
+                     1px 1px 0 #2a5971;    /* Bottom-right shadow */
+    border-radius: 2px;
+
+    font-size: 12px;
+}
+
+.mockup-add-btn:hover{
+    color: #dcf1c6;
+    background-color: #65c4da;
+    cursor: pointer;
+    border-color: #1a698a;
+}
+
 .container{
     max-width: 800px;
     margin: 0 auto;
@@ -179,6 +286,10 @@ list-style: none;
 
 .italic{
     font-style: italic;
+}
+
+.align-left{
+    text-align: left;
 }
 
 /* screen smaller */
