@@ -2268,7 +2268,7 @@ export const ingredientsData = [
             ],
         recipe4: [
             {name: "Egg", percent: 34},
-            {name: "Bottled Water", percent: 59},
+            {name: "Bottled Water", percent: 60},
             {name: "Sugar", percent: 6},
             ],
         recipeInGame: [

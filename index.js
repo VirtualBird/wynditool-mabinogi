@@ -12,6 +12,27 @@ itemSearchEl.addEventListener("input", updateSearch)
 checkboxByName.addEventListener('change', updateSearch)
 checkboxByIngredient.addEventListener('change', updateSearch)
 
+const AppState = {
+    selectedMainItemName: "",
+    selectedRecipeIndex: 1,
+
+    setRecipeNum(index){
+        this.selectedRecipeIndex = index
+    },
+
+    setSelectedMainItemName(name){
+        this.selectedMainItemName = name
+    },
+
+    getRecipeNum(){
+        return this.selectedRecipeIndex
+    },
+
+    getSelectedMainItemName(){
+        return this.selectedMainItemName
+    },
+}
+
 document.addEventListener('click', function(e){
     // if (e.target.classList.contains('search-name'))
     // {
@@ -19,9 +40,17 @@ document.addEventListener('click', function(e){
     // }
     if (e.target.classList.contains('search-name') && e.target.dataset.name)
     {
+        AppState.setRecipeNum(1)
         displayMainItem(e.target.dataset.name)
         document.getElementById("item-selected-details").classList.remove("hidden")
         document.getElementById("cooking-window-mockup").classList.remove("hidden")
+    }
+    else if (e.target.classList.contains("recipe-span")){
+        const num = e.target.dataset.num
+        console.log("Set to ", num)
+
+        AppState.setRecipeNum(num)
+        displayMainItem(AppState.getSelectedMainItemName())
     }
     else if (e.target.dataset.name)
     {
@@ -35,6 +64,8 @@ document.addEventListener('click', function(e){
 // Displays the details of the selected item
 function displayMainItem(itemName)
 {
+    AppState.setSelectedMainItemName(itemName)
+
     let detailsHTML = ''
     if (itemName)
     {
@@ -73,9 +104,46 @@ function displayMainItem(itemName)
         //  If recipe parameter exists
         if (itemObj?.recipe)
         {
-            const recipeHtml = itemObj.recipe.map(function(item){
-                return `<li>${item.name} (${item.percent}%)</li>`
-            }).join('')
+            if (itemObj?.recipe2 || itemObj?.recipe3 || itemObj?.recipe4 || itemObj?.recipeInGame)
+            {
+                detailsHTML += `<p>This item has multiple known recipes</p>`
+                detailsHTML += `<p>
+                    ${itemObj?.recipeInGame ? `<span class="recipe-span ${AppState.getRecipeNum() == 0 ? "selected" : ""}" data-num="0">In-game</span>` : ""}
+                    ${itemObj?.recipe ? `<span class="recipe-span ${AppState.getRecipeNum() == 1 ? "selected" : ""}" data-num="1">1</span>` : ""}
+                    ${itemObj?.recipe2 ? `<span class="recipe-span ${AppState.getRecipeNum() == 2 ? "selected" : ""}" data-num="2">2</span>` : ""}
+                    ${itemObj?.recipe3 ? `<span class="recipe-span ${AppState.getRecipeNum() == 3 ? "selected" : ""}" data-num="3">3</span>` : ""}
+                    ${itemObj?.recipe4 ? `<span class="recipe-span ${AppState.getRecipeNum() == 4 ? "selected" : ""}" data-num="4">4</span>` : ""}
+                    </p>`
+            }
+
+            // so just put the displayed recipe here
+            let recipeHtml = ''
+
+            if (AppState.getRecipeNum() == "1"){
+                recipeHtml = itemObj.recipe.map(function(item){
+                    return `<li>${item.name} (${item.percent}%)</li>`
+                }).join('')
+            }
+            else if (AppState.getRecipeNum() == 2){
+                recipeHtml = itemObj.recipe2.map(function(item){
+                    return `<li>${item.name} (${item.percent}%)</li>`
+                }).join('')
+            }
+            else if (AppState.getRecipeNum() == 3){
+                recipeHtml = itemObj.recipe3.map(function(item){
+                    return `<li>${item.name} (${item.percent}%)</li>`
+                }).join('')
+            }
+            else if (AppState.getRecipeNum() == 4){
+                recipeHtml = itemObj.recipe4.map(function(item){
+                    return `<li>${item.name} (${item.percent}%)</li>`
+                }).join('')
+            }
+            else if (AppState.getRecipeNum() == 0){
+                recipeHtml = itemObj.recipeInGame.map(function(item){
+                    return `<li>${item.name} (${item.percent}%)</li>`
+                }).join('')
+            }
 
             detailsHTML +=  `
                 <div>
@@ -83,9 +151,33 @@ function displayMainItem(itemName)
                     <ul>${recipeHtml}</ul>
                 </div>`
 
-            const percentArr = itemObj.recipe.map(function(item){
-                return item.percent
-            })
+            let percentArr = ""
+            
+            if (AppState.getRecipeNum() == 1){
+                percentArr = itemObj.recipe.map(function(item){
+                    return item.percent
+                })
+            }
+            else if (AppState.getRecipeNum() == 2){
+                percentArr = itemObj.recipe2.map(function(item){
+                    return item.percent
+                })
+            }
+            else if (AppState.getRecipeNum() == 3){
+                percentArr = itemObj.recipe3.map(function(item){
+                    return item.percent
+                })
+            }
+            else if (AppState.getRecipeNum() == 4){
+                percentArr = itemObj.recipe4.map(function(item){
+                    return item.percent
+                })
+            }
+            else if (AppState.getRecipeNum() == 0){
+                percentArr = itemObj.recipeInGame.map(function(item){
+                    return item.percent
+                })
+            }
 
             setCookingBarPercentages(percentArr[0], percentArr[1], percentArr[2])
         }
