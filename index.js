@@ -204,10 +204,13 @@ function displayMainItem(itemName)
 
         if (itemObj?.price)
         {
+            const itemCurrency = itemObj?.priceCurrency ? ` ${itemObj?.priceCurrency}` : "g"
+            console.log(itemCurrency)
+
             detailsHTML += `
                             <div>
                             <p>Price</p>
-                            <p>${itemObj.price}g</p>
+                            <p>${itemObj.price}${itemCurrency}</p>
                             </div>`
         }
 
@@ -293,6 +296,16 @@ function displaySelectedItem(itemName)
                             <p>Purchase from</p>
                             <p>${itemObj.purchase}</p>
                             </div>`
+
+            if (itemObj?.price)
+            {
+                const itemCurrency = itemObj?.priceCurrency ? ` ${itemObj?.priceCurrency}` : "g"
+
+                displayHtml += `<div>
+                            <p>Price</p>
+                            <p>${itemObj.price}${itemCurrency}</p>
+                            </div>`
+            }
         }
         if (itemDrop){
             displayHtml += `<p>Drop location</p>`
@@ -304,6 +317,16 @@ function displaySelectedItem(itemName)
                 displayHtml += itemDrop.fishing.map(function(location)
                 {
                     return `<li>${location}</li>`
+                }).join('')
+                displayHtml += `</ul>`
+            }
+            if(itemDrop?.gathering)
+            {
+                displayHtml += `<ul>Gathering`
+
+                displayHtml += itemDrop.gathering.map(function(method)
+                {
+                    return `<li>${method}</li>`
                 }).join('')
                 displayHtml += `</ul>`
             }
@@ -325,7 +348,7 @@ function renderNestedIngredientsList(itemObj, nestedIngredientsObj)
     listHtml = `
                 <h2>Ingredient Tree</h2>
                 <ul class="nested-list-top">
-                <li><span>${itemObj.method}</span>${itemObj.name}`
+                <li class="index-main"><span>${itemObj.method}</span><div data-name="${itemObj.name}">${itemObj.name}</div>`
     listHtml += renderNestedIngredients(nestedIngredientsObj)
     listHtml += `</li>`
     listHtml += `</ul>`
@@ -596,6 +619,7 @@ function updateSearch()
 {
     // const list = updateItemList(this.value)
     const list = updateItemList(itemSearchEl.value)
+
 
     const searchByName = document.getElementById("by-name").checked
     const searchByIngredient = document.getElementById("by-ingredient").checked

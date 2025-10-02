@@ -1,12 +1,22 @@
+:root {
+    --blue1: #ADD7F6;
+    --blue2: #87bfff;
+    --blue3: #3F8EFC;
+    --blue4: #2667FF;
+    --blue5: #3B28CC;
+}
+
+
 body{
     margin: 0;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: bisque;
+    background-color: var(--blue1);
 }
 
 header{
     margin: 0;
+    background-color: var(--blue2);
 }
 
 h1{
@@ -18,7 +28,7 @@ h1{
 ul{
     margin: 0;
     padding: 0;
-    /* border: 1px solid turquoise; */
+    list-style: none;
 }
 
 li{
@@ -26,9 +36,13 @@ li{
 }
 
 input{
-    border: 2px solid lightblue;
+    border: 2px solid var(--blue3);
     border-radius: 4px;
     padding: 5px 10px;
+}
+
+input:focus{
+    border: 2px solid var(--blue5);
 }
 
 .item-search-div{
@@ -40,12 +54,61 @@ input{
     margin-top: 1rem;
 }
 
+.item-list{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid var(--blue3);
+    /* border-radius: 1em; */
+    flex: 1 300px;
+    min-height: 200px;
+    max-height: 800px;
+    overflow-y: auto;
+    background-color: var(--blue2);
+}
+
+.item-details{
+    margin-top: 1em;
+    padding-bottom: 1em;
+    background-color: var(--blue2);
+    border-radius: 1em;
+    border: 2px solid var(--blue4);
+}
+
+/* This seems to be unused? */
+.item-details p span{
+    padding: 0.25rem 0.5rem;
+    min-width: 30px;
+    border: 1px solid var(--blue5);
+    /* font-size: 0.8rem; */
+    display: inline-block;
+
+    &:hover{
+        border-color: var(--blue5);
+        background-color: var(--blue3);
+        cursor: pointer;
+    }
+}
+
+.item-selected-details{
+    margin-top: 1em;
+    background-color: var(--blue1);
+    border-radius: 1em;
+    
+    border: 2px solid var(--blue2);
+}
+
 .item-nested-ingredients-list{
+    padding: 0 1em 1em 1em;
     text-align: left;
     font-size: 1rem;
     margin-bottom: 2rem;
-    /* border-left: 2px solid #aaaaff; */
+    border: 2px solid var(--blue2);
     border-radius: 1rem;
+}
+
+.item-nested-ingredients-list li{
+    margin-left: 2rem;
 }
 
 .item-nested-ingredients-list span{
@@ -63,12 +126,14 @@ input{
 
 .item-nested-ingredients-list li div:hover,
 .item-base-ingredients-list li:hover{
-    color: #22aaaa;
+    color: var(--blue5);
     cursor: pointer;
     transition: 0.1s
 }
 
-
+.item-nested-ingredients-list .nested-list-top .index-main{
+    margin-left: 0.5em;
+}
 
 .item-nested-ingredients-list ul {
     margin-left: 0rem;
@@ -94,12 +159,16 @@ input{
     border: none;
 }
 
-.item-nested-ingredients-list li{
-    margin-left: 2rem;
-}
+
 
 .item-base-ingredients-list{
+    padding: 0 1em 1em 1em;
     text-align: left;
+    border-radius: 1em;
+    border: 2px solid var(--blue2);
+    /* margin-top: 1em; */
+    margin-bottom: 1em;
+    height: fit-content;
 }
 
 .item-base-ingredients-list li{
@@ -247,24 +316,13 @@ list-style: none;
 }
 
 .search-list:hover{
-    background-color: floralwhite;
+    background-color: aliceblue;
     cursor: pointer;
 }
 
-.item-details{
-    background-color:antiquewhite;
-    /* border: 1px solid blue; */
-}
 
-.item-list{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* border: 1px solid red; */
-    flex: 1 300px;
-    max-height: 800px;
-    overflow-y: auto;
-}
+
+
 
 
 
@@ -276,24 +334,12 @@ list-style: none;
     display: flex;
 }
 
-.item-details p span{
-    padding: 0.25rem 0.5rem;
-    min-width: 30px;
-    border: 1px solid orange;
-    /* font-size: 0.8rem; */
-    display: inline-block;
 
-    &:hover{
-        border-color: blue;
-        background-color: lightblue;
-        cursor: pointer;
-    }
-}
 
 .item-details .selected{
     color: aliceblue;
-    border-color: blue;
-    background-color: steelblue;
+    border-color: var(--blue5);
+    background-color: var(--blue4);
 }
 
 .item-container{

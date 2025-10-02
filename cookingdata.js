@@ -2839,12 +2839,12 @@ export const ingredientsData = [
             {name: "Salt", percent: 9},
             ],
         recipe3: [
-            {name: "Hazelnut Mushroom", percent: 5},
+            {name: "Hazelnut Mushroom", percent: 55},
             {name: "Onion", percent: 36},
             {name: "Sugar", percent: 9},
             ],
         recipe4: [
-            {name: "Hazelnut Mushroom", percent: 5},
+            {name: "Hazelnut Mushroom", percent: 55},
             {name: "Onion", percent: 36},
             {name: "Pepper", percent: 9},
             ],
@@ -5445,7 +5445,7 @@ export const ingredientsData = [
     },
     {
         name: "Shrimp",
-        purchase: ["Caitin", "Glenis", "Shena"],
+        purchase: ["Caitin", "Glenis", "Shena", "Cadoc"],
     },
     {
         name: "Slice of Cheese",
@@ -5484,7 +5484,7 @@ export const ingredientsData = [
     {
         name: "Yeast",
         purchase: ["Caitin", "Glenis", "Shena"],   
-        value: 10
+        price: 10
     },
     {
         name: "Black Sea Bream",
@@ -5523,10 +5523,6 @@ export const ingredientsData = [
         purchase: ["Cadoc"],   
     },
     {
-        name: "Shrimp",
-        purchase: ["Cadoc"],   
-    },
-    {
         name: "Sturgeon",
         purchase: ["Cadoc"],   
     },
@@ -5560,6 +5556,23 @@ export const ingredientsData = [
     {
         name: "Leighean Gin",
         purchase: ["Annick"]
+    },
+    {
+        name: "Apple",
+        drop: "Hit an apple tree until an apple falls."
+    },
+    {
+        name: "Wheat Flour",
+        method: "Milling",
+        materials: [{Wheat: 10}],
+        purchase: ["Glewyas"],
+        price: 1,
+        priceCurrency: "Royal Court Food Delivery List 1",
+    },
+    {
+        name: "Bottled Water",
+        method: "Gathering",
+        drop: {gathering: ["Equip an Empty Bottle and left-click on a well or a body of water"]},
     }
     
 ]
