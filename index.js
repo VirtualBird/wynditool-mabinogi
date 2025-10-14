@@ -13,88 +13,164 @@ checkboxByName.addEventListener('change', updateSearch)
 checkboxByIngredient.addEventListener('change', updateSearch)
 
 const AppState = {
-    selectedMainItemName: "",
+    selectedItemName: "",
     selectedRecipeIndex: 1,
 
     setRecipeNum(index){
         this.selectedRecipeIndex = index
     },
 
-    setSelectedMainItemName(name){
-        this.selectedMainItemName = name
+    setSelectedItemName(name){
+        this.selectedItemName = name
     },
 
     getRecipeNum(){
         return this.selectedRecipeIndex
     },
 
-    getSelectedMainItemName(){
-        return this.selectedMainItemName
+    getSelectedItemName(){
+        return this.selectedItemName
     },
 }
 
+//  Listener for user clicks
 document.addEventListener('click', function(e){
-    // if (e.target.classList.contains('search-name'))
-    // {
-    //     displayMainItem(e.target.textContent)
-    // }
+
+    //  If the user clicked on an item in the searchlist
     if (e.target.classList.contains('search-name') && e.target.dataset.name)
     {
+        //  Set the selected item name and recipe number
         AppState.setRecipeNum(1)
-        displayMainItem(e.target.dataset.name)
-        document.getElementById("item-selected-details").classList.remove("hidden")
-        document.getElementById("cooking-window-mockup").classList.remove("hidden")
-    }
-    else if (e.target.classList.contains("recipe-span")){
-        const num = e.target.dataset.num
-        console.log("Set to ", num)
+        AppState.setSelectedItemName(e.target.dataset.name)
 
-        AppState.setRecipeNum(num)
-        displayMainItem(AppState.getSelectedMainItemName())
+        handleSearchListClick()
     }
+    //  If the user clicked on a recipe number button
+    else if (e.target.classList.contains("recipe-span")){
+        const num = parseInt(e.target.dataset.num)
+        AppState.setRecipeNum(num)
+
+        handleRecipeNumberClick()
+    }
+    //  If the user clicked on a sub ingredient
     else if (e.target.dataset.name)
     {
+        //  Show Sub Ingredient section
         displaySelectedItem(e.target.dataset.name)
+
+        handleSubItemClick()
     }
 
     console.log(e.target)
 })
 
 
-// Displays the details of the selected item
-function displayMainItem(itemName)
+//  Updates search list
+function updateSearch()
 {
-    AppState.setSelectedMainItemName(itemName)
+    const list = updateSearchList(itemSearchEl.value)
 
+    const searchByName = document.getElementById("by-name").checked
+    const searchByIngredient = document.getElementById("by-ingredient").checked
+
+    //  If no search options have been selected
+    if (!searchByName && !searchByIngredient)
+    {
+        const alertMessageStr = "You should probably check a search option..."
+
+        itemListEl.innerHTML = `<p>${alertMessageStr}</p>`
+        return
+    }
+
+    if (list)
+    {
+        const listHTML = list.map(function(item){
+
+            // Warning - item names that contain double quotes will break. Rewrite with escaping/DOM functions if needed
+            
+            return `<li class="search-list">
+                <div class="search-method" data-name="${item.name}">${item.method ?? ''}</div> 
+                <div class="search-name" data-name="${item.name}">${item.name}</div>
+                </li>`
+
+        }).join('')
+
+        itemListEl.innerHTML = listHTML
+
+        if (!listHTML)
+        {
+            itemListEl.innerHTML = '<p>No Results...</p>'
+        }
+    }
+    else
+    {
+        itemListEl.innerHTML = '<p>Search field empty</p>'
+    }
+}
+
+function updateSearchList(item)
+{
+    //  If Item Search is not blank
+    if (item)
+    {
+        const searchByName = document.getElementById("by-name").checked
+        const searchByIngredient = document.getElementById("by-ingredient").checked
+        
+        //  Find Items based on search conditions
+        const list = ingredientsData.filter(function(obj)
+        {
+            const foundByName = searchByName ? obj.name.toLowerCase().includes(item.toLowerCase()) : false
+            const foundByIngredient = searchByIngredient ? getAllIngredients(obj).some(function(ingredient)
+                {
+                    return ingredient.toLowerCase().startsWith(item.toLowerCase())
+                }) : false
+            return foundByName || foundByIngredient
+        })
+        return list
+    }
+    else
+    {
+        return false;
+    }    
+}
+
+
+//  Render page
+function render()
+{
+    itemDetailsEl.innerHTML = getDetailsHTML()
+}
+
+//  Get site html
+function getDetailsHTML()
+{
     let detailsHTML = ''
+    const itemName = AppState.getSelectedItemName()
+
+    //  If a main item exists
     if (itemName)
     {
         const itemObj = ingredientsData.find(function(item)
         {
-            // return item.name.includes(itemName)
             return item.name === itemName
-        })
+        })  
+
+        //  Main Item Name HTML
         detailsHTML = ` <h2>${itemObj.name}</h2>`
 
+        //  Display Main Item's Method
         const itemMethod = itemObj?.method ?? ''
+
         if (itemMethod)
         {
             detailsHTML += `<p>${itemMethod} (${getCookingRankByMethod(itemMethod)} Cooking)</p>`
         }
-        // So here I want to get the highest rank needed for the rest of these main recipe's ingredients just in case and put it here
-        
-        const rankNameForAll = getRequiredCookingRankAll(itemObj)
-        console.log("Actual Rank from all ingredients for this recipe")
-        
-        console.log(getRequiredCookingRankAll(itemObj))
-        console.log(getCookingRankByMethod(itemMethod))
 
-        
+        const rankNameForAll = getRequiredCookingRankAll(itemObj)
 
         //  Don't show warning message on items that can't be cooked
         if (isIngredientRankHigherThanMainDish(0, getCookingRankByMethod(itemMethod)))
         {
-            console.log("Test")
             if (isIngredientRankHigherThanMainDish(getCookingRankByMethod(itemMethod), getRequiredCookingRankAll(itemObj)))
             {
                 detailsHTML +=`<p>*${rankNameForAll} Cooking is required for ${getMethodbyCookingRank(rankNameForAll)}</p>`
@@ -104,8 +180,10 @@ function displayMainItem(itemName)
         //  If recipe parameter exists
         if (itemObj?.recipe)
         {
+            //  Also check if other recipes exist
             if (itemObj?.recipe2 || itemObj?.recipe3 || itemObj?.recipe4 || itemObj?.recipeInGame)
             {
+                //  Display buttons for other known recipes
                 detailsHTML += `<p>This item has multiple known recipes</p>`
                 detailsHTML += `<p>
                     ${itemObj?.recipeInGame ? `<span class="recipe-span ${AppState.getRecipeNum() == 0 ? "selected" : ""}" data-num="0">In-game</span>` : ""}
@@ -116,10 +194,9 @@ function displayMainItem(itemName)
                     </p>`
             }
 
-            // so just put the displayed recipe here
             let recipeHtml = ''
 
-            if (AppState.getRecipeNum() == "1"){
+            if (AppState.getRecipeNum() == 1){
                 recipeHtml = itemObj.recipe.map(function(item){
                     return `<li>${item.name} (${item.percent}%)</li>`
                 }).join('')
@@ -179,7 +256,10 @@ function displayMainItem(itemName)
                 })
             }
 
+            //  Add the main item to the recipe bars
             setCookingBarPercentages(percentArr[0], percentArr[1], percentArr[2])
+            setCookingBarName(itemObj.name)
+            setCookingBarIngredientsList(itemObj)
         }
         //  fallback to old ingredients code
         else if (itemObj?.ingredients)
@@ -190,7 +270,8 @@ function displayMainItem(itemName)
                             <p>${itemObj.ingredients}</p>
                             </div>`
 
-            setCookingBarPercentages(0)
+            // setCookingBarPercentages(0)
+            // setCookingBarName("Unknown Item")
         }
 
         if (itemObj?.purchase)
@@ -214,10 +295,7 @@ function displayMainItem(itemName)
                             </div>`
         }
 
-                        
-        // console.log("retruneing " + itemObj.ingredients)
-
-        // Display ingredients nested
+        //  Display Nested Ingredients
         const nestedIngredientsObj = getNestedIngredients(itemObj)
         const itemNestedIngredientsListEl = document.getElementById("item-nested-ingredients-list")
 
@@ -226,24 +304,17 @@ function displayMainItem(itemName)
 
         itemNestedIngredientsListEl.innerHTML = nestedListHtml
 
-        // console.log("What we got ")
-        // console.log(nestedIngredientsObj)
 
-        //  I want to get all the base ingredients used
+        //  Display Base Ingredients
         const baseIngredientArr = getBaseIngredients(itemObj)
         const baseIngredientObj = getObjBaseIngredients(baseIngredientArr)
 
-
-        // console.log ("All found ingredients ")
-        // console.log (itemObj)
-        // console.log(getAllIngredients(itemObj))
-
-        // console.log(baseIngredientObj)
         let baseIngredientsHtml = ''
 
         baseIngredientsHtml = getBaseIngredientsListHtml(baseIngredientObj)
 
         const itemBaseIngredientsListEl = document.getElementById("item-base-ingredients-list")
+
         if (baseIngredientsHtml)
         {
             itemBaseIngredientsListEl.classList.remove("hidden")
@@ -255,17 +326,31 @@ function displayMainItem(itemName)
         itemBaseIngredientsListEl.innerHTML = baseIngredientsHtml
 
     }
-    else
-    {
 
-    }
+    return detailsHTML
+}
 
-    itemDetailsEl.innerHTML = detailsHTML
+function handleSearchListClick()
+{
+    document.getElementById("sub-item-details").classList.add("hidden")
+    document.getElementById("cooking-window-mockup").classList.remove("hidden")
+
+    render()
+}
+
+function handleRecipeNumberClick()
+{
+    render()
+}
+
+function handleSubItemClick()
+{
+    document.getElementById("sub-item-details").classList.remove("hidden")
 }
 
 function displaySelectedItem(itemName)
 {
-    const selectedItemEl = document.getElementById("item-selected-details")
+    const selectedItemEl = document.getElementById("sub-item-details")
     let displayHtml = ''
 
     if (itemName)
@@ -284,11 +369,13 @@ function displaySelectedItem(itemName)
         if (itemMethod){
             displayHtml += `<p>Method: ${itemMethod} (${getCookingRankByMethod(itemMethod)})</p>`
         }
+
         if (itemIngredients){
             displayHtml += itemIngredients.map(function(ingredient){
                 return `<li>${ingredient}</li>`
             }).join('')
         }
+
         if (itemObj?.purchase)
         {
             displayHtml += `
@@ -307,6 +394,7 @@ function displaySelectedItem(itemName)
                             </div>`
             }
         }
+
         if (itemDrop){
             displayHtml += `<p>Drop location</p>`
 
@@ -335,11 +423,69 @@ function displaySelectedItem(itemName)
         if (!itemObj)
         {
             displayHtml += `Uh oh! This item appears to be missing from the database... pls tell Wyndia`
+
+            //  setCookingBarName("Unknown Item")
+            //  setCookingBarPercentages(0)
+        }
+        else
+        {
+            
+            
+            let percentArr = ""
+
+            //  And set cooking bar percentages if available
+            if (AppState.getRecipeNum() == 1){
+                percentArr = itemObj.recipe?.map(function(item){
+                    return item.percent;
+                }) || [];
+            }
+            else if (AppState.getRecipeNum() == 2){
+                percentArr = itemObj.recipe2?.map(function(item){
+                    return item.percent;
+                }) || itemObj.recipe?.map(function(item){
+                    return item.percent;
+                }) || [];
+            }
+            else if (AppState.getRecipeNum() == 3){
+                percentArr = itemObj.recipe3?.map(function(item){
+                    return item.percent;
+                }) || itemObj.recipe?.map(function(item){
+                    return item.percent;
+                }) || [];
+            }
+            else if (AppState.getRecipeNum() == 4){
+                percentArr = itemObj.recipe4?.map(function(item){
+                    return item.percent;
+                }) || itemObj.recipe?.map(function(item){
+                    return item.percent;
+                }) || [];
+            }
+            else if (AppState.getRecipeNum() == 0){
+                percentArr = itemObj.recipeInGame?.map(function(item){
+                    return item.percent;
+                }) || itemObj.recipe?.map(function(item){
+                    return item.percent;
+                }) || [];
+            }
+
+            //  Set name if recipe% exists
+            if (percentArr != "")
+            {
+                setCookingBarName(itemName)
+            
+                setCookingBarPercentages(percentArr[0], percentArr[1], percentArr[2])
+                setCookingBarIngredientsList(itemObj)
+            }
         }
     }
-
     selectedItemEl.innerHTML = displayHtml
 }
+
+
+
+// Nested Ingredient Functions
+
+
 
 function renderNestedIngredientsList(itemObj, nestedIngredientsObj)
 {
@@ -357,26 +503,26 @@ function renderNestedIngredientsList(itemObj, nestedIngredientsObj)
 }
 
 function renderNestedIngredients(obj, index = 0){
-    let nestedHtml = ''
+    let nestedListHtml = ''
 
-    nestedHtml = `<ul class='nested-ingredient index-${index}'>`
+    nestedListHtml = `<ul class='nested-ingredient index-${index}'>`
 
     for (const ingredient in obj){
-        nestedHtml += `<li class="index-${index}"><span>${getMethod(ingredient) ?? ''}</span><div data-name="${ingredient}">${ingredient}</div>`
+        nestedListHtml += `<li class="index-${index}"><span>${getMethod(ingredient) ?? ''}</span><div data-name="${ingredient}">${ingredient}</div>`
 
         const nested = obj[ingredient]
 
         if (nested && Object.keys(nested).length > 0){
-            // Recursively render nested ingredients
-            nestedHtml += renderNestedIngredients(nested, index+1)
+            //  Recursively render nested ingredients
+            nestedListHtml += renderNestedIngredients(nested, index+1)
         }
 
-        nestedHtml += `</li>`
+        nestedListHtml += `</li>`
     }
 
-    nestedHtml += "</ul>"
+    nestedListHtml += "</ul>"
 
-    return nestedHtml
+    return nestedListHtml
 }
 
 function getNestedIngredients(itemObj)
@@ -384,64 +530,110 @@ function getNestedIngredients(itemObj)
     return parseNestedIngredients(itemObj)
 }
 
-function getMethod(itemName)
-{
-    const itemObj = ingredientsData.find(function(item)
-    {
-        return item.name === itemName
-    })
-
-    if (itemObj)
-    {
-        return itemObj.method
-    }
-    else{
-        return ''
-    }    
-}
-
 function parseNestedIngredients(ingredientObj)
 {
     let recipeObj = {}
 
-    // if no ingredients found
+    //  If no ingredients found
     if(!ingredientObj || !Array.isArray(ingredientObj.ingredients))
     {
         return recipeObj
     }
+
+    // switch (AppState.getRecipeNum()) {
+    //     case "1":
+    //         objRecipe = ingredientObj.recipe
+    //         break;
+    //     case "2":
+    //         objRecipe = ingredientObj.recipe2
+    //         break;
+    //     case "3":
+    //         objRecipe = ingredientObj.recipe3
+    //         break;
+    //     case "4":
+    //         objRecipe = ingredientObj.recipe4
+    //         break;
+    //     case "0":
+    //         objRecipe = ingredientObj.recipeInGame
+    //         break;
+    //     default:
+    //         console.log("Error, unknown recipe for parseNestedIngredients")
+    //         break;
+    // }
+
+    // let recipeIngredients = ""
+    
+    // switch( parseInt( AppState.getRecipeNum() ) ){
+    //     case 1:
+    //         if (recipeIngredients?.recipe !== undefined){
+    //             recipeIngredients = ingredientObj.recipe.map(ingredient => ingredient.name)
+    //         }
+    //         else{    //Fallback if recipe property doesn't exist
+    //             recipeIngredients = ingredientObj.ingredients
+    //         }
+    //     break;
+    //     case 2:
+    //         if (recipeIngredients?.recipe2)
+    //             recipeIngredients = ingredientObj?.recipe2.map(ingredient => ingredient.name)
+    //         else
+    //             recipeIngredients = ingredientObj.ingredients
+    //     break;
+    //     case 3:
+    //         if (recipeIngredients?.recipe3)
+    //             recipeIngredients = ingredientObj.recipe3.map(ingredient => ingredient.name)
+    //         else
+    //             recipeIngredients = ingredientObj.ingredients
+    //     break;
+    //     case 4:
+    //         if (recipeIngredients?.recipe4)
+    //             recipeIngredients = ingredientObj.recipe4.map(ingredient => ingredient.name)
+    //         else
+    //             recipeIngredients = ingredientObj.ingredients
+    //     break;
+    //     case 0:
+    //         if (recipeIngredients?.recipeInGame)
+    //             recipeIngredients = ingredientObj.recipe0.map(ingredient => ingredient.name)
+    //         else
+    //             recipeIngredients = ingredientObj.ingredients
+    //     break;
+    //     default:
+    //     console.log('Recipe Not Found')
+    //     break;
+    // }
+
+    // console.log(recipeIngredients)
+    // console.log(ingredientObj.ingredients)
 
     for (const ingredient of ingredientObj.ingredients)
     {
         const itemObj = ingredientsData.find(function(item){
             return item.name === ingredient
         })
-        // console.log(ingredient)
+
         // Checks if the object from ingredientsData exists and checks if it also has ingredients property
         if (itemObj && 'ingredients' in itemObj)
         {
-            // console.log(ingredient + " exists in data")
-
-            // Recursive Call to get nested ingredients
+            // Recursive call to get Nested Ingredients
             const nestedIngredients = parseNestedIngredients(itemObj)
-            // console.log("From parseNestedIngredients()")
-            // console.log(nestedIngredients)
             
             recipeObj[ingredient] = nestedIngredients
-            // console.log("recipe obj is now the following ")
-            // console.log(recipeObj)
         }
-        else    // if its a base ingredient
+        else    // If its a base ingredient
         {
-            // console.log("Base Ingredient Found " + ingredient)
             // I guess if its a base ingredient just slap it into the object
             recipeObj[ingredient] = {}
-            // console.log("recipe obj is now the following ")
-            // console.log(recipeObj)
         }
     }
 
     return recipeObj
 }
+
+
+
+// Base Ingredient Functions
+
+
+
 function getBaseIngredientsListHtml(listObj)
 {
     let listHtml = ''
@@ -456,13 +648,13 @@ function getBaseIngredientsListHtml(listObj)
     return listHtml
 }
 
-// Sorts an array into a array of objects with name and quantity
+//  Sorts an array into a array of objects with name and quantity
 function getObjBaseIngredients(arr){
 
     let baseIngredients = {};
 
     arr.forEach(function(ingredient){
-        // add ingredient count by 1 or set to 1 if doesn't exist
+        //  add ingredient count by 1 or set to 1 if doesn't exist
         baseIngredients[ingredient] = (baseIngredients[ingredient] || 0) + 1
     })
 
@@ -475,17 +667,48 @@ function getBaseIngredients(ingredientObj)
     return baseIngredientsArr
 }
 
-function parseAllIngredients(ingredientObj)
+function parseBaseIngredients(ingredientObj)
 {
     const ingredientsArr = []
 
-        // skip if no ingredients array
+    //  skip if no ingredients array
     if(!ingredientObj || !Array.isArray(ingredientObj.ingredients))
     {
         return ingredientsArr
     }
 
-        // for each item in the object's ingredients property
+    for (const ingredient of ingredientObj.ingredients)
+    {
+        const itemObj = ingredientsData.find(function(item){
+            return item.name === ingredient
+        })
+
+        // Checks if the object from ingredientsData exists and checks if it also has ingredients property
+        if (itemObj && 'ingredients' in itemObj)
+        {
+             // Recursive Call to get nested ingredients
+             const nestedIngredients = parseBaseIngredients(itemObj)
+             ingredientsArr.push(...nestedIngredients)
+        }
+        else    // if its a base ingredient
+        {
+            ingredientsArr.push(ingredient)
+        }
+    }
+    return ingredientsArr
+}
+
+function parseAllIngredients(ingredientObj)
+{
+    const ingredientsArr = []
+
+    // skip if no ingredients array
+    if(!ingredientObj || !Array.isArray(ingredientObj.ingredients))
+    {
+        return ingredientsArr
+    }
+
+    // for each item in the object's ingredients property
     for (const ingredient of ingredientObj.ingredients)
     {
         
@@ -517,40 +740,6 @@ function getAllIngredients(ingredientObj)
     return allIngredientsArr
 }
 
-function parseBaseIngredients(ingredientObj)
-{
-    const ingredientsArr = []
-
-    // skip if no ingredients array
-    if(!ingredientObj || !Array.isArray(ingredientObj.ingredients))
-    {
-        return ingredientsArr
-    }
-
-    for (const ingredient of ingredientObj.ingredients)
-    {
-        // console.log(ingredient)
-        const itemObj = ingredientsData.find(function(item){
-            return item.name === ingredient
-        })
-
-        // Checks if the object from ingredientsData exists and checks if it also has ingredients property
-        if (itemObj && 'ingredients' in itemObj)
-        {
-            //  console.log(ingredient + " exists in data")
-
-             // Recursive Call to get nested ingredients
-             const nestedIngredients = parseBaseIngredients(itemObj)
-             ingredientsArr.push(...nestedIngredients)
-        }
-        else    // if its a base ingredient
-        {
-            // console.log("Base Ingredient Found " + ingredient)
-            ingredientsArr.push(ingredient)
-        }
-    }
-    return ingredientsArr
-}
 
 function parseIngredients(ingredientsArr)
 {
@@ -561,7 +750,7 @@ function parseIngredients(ingredientsArr)
             return item.name === ingredient
         })
 
-        // Checks if the object from ingredientsData exists and checks if it also has ingredients
+        //  Checks if the object from ingredientsData exists and checks if it also has ingredients
         if (itemObj && 'ingredients' in itemObj)
         {
             console.log(ingredient + " exists in data")
@@ -578,84 +767,9 @@ function parseIngredients(ingredientsArr)
 
         return results
     }
-
-    // ingredientsArr.forEach(function(ingredient){
-    //     console.log(ingredient)
-        
-    //     const itemObj = ingredientsData.find(function(item){
-    //         return item.name === ingredient
-    //     })
-
-    //     // Checks if the object from ingredientsData exists and checks if it also has ingredients
-    //     if (itemObj && 'ingredients' in itemObj)
-    //     {
-    //         console.log(ingredient + " exists indata")
-    //         // Gonna try this parsing through those ingredients too
-    //         testItem = parseIngredients(getIngredientObjByName(ingredient).ingredients)
-    //     }
-    //     else
-    //     {
-    //         console.log(`base ingredients found ${ingredient}`)
-    //         return ingredient
-    //     }
-    // })
-    // console.log(testItem)
-    // return testItem
 }
 
-function getIngredientObjByName(itemName)
-{        
-    return ingredientsData.find(function(item)
-    {
-        if (item.name === itemName)
-        {
-            return item
-        }
-        
-    })
-}
 
-function updateSearch()
-{
-    // const list = updateItemList(this.value)
-    const list = updateItemList(itemSearchEl.value)
-
-
-    const searchByName = document.getElementById("by-name").checked
-    const searchByIngredient = document.getElementById("by-ingredient").checked
-
-    if (!searchByName && !searchByIngredient)
-    {
-        const alertMessageStr = "You should probably check a search option..."
-
-        itemListEl.innerHTML = `<p>${alertMessageStr}</p>`
-        return
-    }
-
-    if(list)
-    {
-        const listHTML = list.map(function(item){
-
-            // Warning - item names that contain double quotes will break. Rewrite with escaping/DOM functions if needed
-            
-            return `<li class="search-list">
-            <div class="search-method" data-name="${item.name}">${item.method ?? ''}</div> 
-            <div class="search-name" data-name="${item.name}">${item.name}</div>
-            </li>`
-        }).join('')
-
-        itemListEl.innerHTML = listHTML
-
-        if (!listHTML)
-        {
-            itemListEl.innerHTML = '<p> No Results... </p>'
-        }
-    }
-    else
-    {
-        itemListEl.innerHTML = '<p>Search field empty</p>'
-    }
-}
 
 function renderCookingDish()
 {
@@ -670,56 +784,18 @@ function renderCookingDish()
                         <p>Ingredients: ${tempItem.ingredients}</p>`
 }
 
-function updateItemList(item)
-{
-    // if its not blank
-    if (item)
-    {
-        const searchByName = document.getElementById("by-name").checked
-        const searchByIngredient = document.getElementById("by-ingredient").checked
-
-        // console.log("Search By Name: ", searchByName)
-        // console.log("Search By Ingredient: ", searchByIngredient)
-        
-        const list = ingredientsData.filter(function(obj){
-            // should check if we want to search by name
-            const foundByName = searchByName ? obj.name.toLowerCase().includes(item.toLowerCase()) : false
-            const foundByIngredient = searchByIngredient ? getAllIngredients(obj).some(function(ingredient)
-                {
-                    return ingredient.toLowerCase().startsWith(item.toLowerCase())
-                }) : false
-
-            // if (searchByName)
-            // {
-            //     return (obj.name.toLowerCase().includes(item.toLowerCase()))
-            // }
-            // else if (searchByIngredient)
-            // {
-            //     const ingredientsArr = getAllIngredients(obj)
-
-            //     return ingredientsArr.some(function(ingredient)
-            //     {
-            //         return ingredient.toLowerCase().includes(item.toLowerCase())
-            //     })
-            // }
-            
-            return foundByName || foundByIngredient
-        })
-        return list
-    }
-    else
-    {
-        return false;
-    }    
-}
-
 function checkBaseIngredient(obj, ingredient)
 {
     console.log(obj)
 }
 
+function setCookingBarName(itemName)
+{
+    const mockupRecipeNameEl = document.getElementById("mockup-recipe-name")
+    mockupRecipeNameEl.textContent = itemName
+}
 
-function setCookingBarPercentages(percenta, percentb = 0, percentc = 0)
+function setCookingBarPercentages(percenta = 0, percentb = 0, percentc = 0)
 {
     const percentAEl = document.getElementById("mockup-pct1")
     const percentBEl = document.getElementById("mockup-pct2")
@@ -728,6 +804,83 @@ function setCookingBarPercentages(percenta, percentb = 0, percentc = 0)
     percentAEl.style.width = `${percenta}%`
     percentBEl.style.width = `${percentb}%`
     percentCEl.style.width = `${percentc}%`
+}
+
+function setCookingBarIngredientsList(itemObj){
+    const ingredientListEl = document.getElementById("mockup-ingredients-instructions")
+
+    let listHtml = ""
+    
+    // itemObj.recipe?.map(function(item){
+    //                 return `<li>${item.name} (${item.percent}%)</li>`
+    //             }).join('') || []
+
+    //  This code is a little unstable 
+
+    if (AppState.getRecipeNum() == 1){
+        listHtml = itemObj.recipe.map(function(item){
+            return `<li>${item.name} (${item.percent}%)</li>`
+        }).join('')
+    }
+    else if (AppState.getRecipeNum() == 2){
+        listHtml = itemObj.recipe2?.map(function(item){
+            return `<li>${item.name} (${item.percent}%)</li>`
+        }).join('') || itemObj.recipe.map(function(item){
+            return `<li>${item.name} (${item.percent}%)</li>`
+        }).join('')
+    }
+    else if (AppState.getRecipeNum() == 3){
+        listHtml = itemObj.recipe3?.map(function(item){
+            return `<li>${item.name} (${item.percent}%)</li>`
+        }).join('') || itemObj.recipe.map(function(item){
+            return `<li>${item.name} (${item.percent}%)</li>`
+        }).join('')
+    }
+    else if (AppState.getRecipeNum() == 4){
+        listHtml = itemObj.recipe4?.map(function(item){
+            return `<li>${item.name} (${item.percent}%)</li>`
+        }).join('') || itemObj.recipe.map(function(item){
+            return `<li>${item.name} (${item.percent}%)</li>`
+        }).join('')
+    }
+    else if (AppState.getRecipeNum() == 0){
+        listHtml = itemObj.recipeInGame?.map(function(item){
+            return `<li>${item.name} (${item.percent}%)</li>`
+        }).join('') || itemObj.recipe.map(function(item){
+            return `<li>${item.name} (${item.percent}%)</li>`
+        }).join('')
+    }
+
+    ingredientListEl.innerHTML = listHtml
+}
+
+function getIngredientObjByName(itemName)
+{        
+    return ingredientsData.find(function(item)
+    {
+        if (item.name === itemName)
+        {
+            return item
+        }
+        
+    })
+}
+
+//  Gets cooking method of cooking dish by name
+function getMethod(itemName)
+{
+    const itemObj = ingredientsData.find(function(item)
+    {
+        return item.name === itemName
+    })
+
+    if (itemObj)
+    {
+        return itemObj.method
+    }
+    else{
+        return ''
+    }    
 }
 
 function getMethodbyCookingRank(cookingRank)
@@ -815,11 +968,9 @@ function getRequiredCookingRankAll(itemObj)
 {
     if (!itemObj) return "Rank Novice";
 
-    //So I get the method name
     const currentRank = getCookingRankByMethod(itemObj.method)
-    console.log(`this item ${itemObj.name} requires ${currentRank}`)
 
-    //Maybe add an ignore statement for objects that are purchaseable
+    //  Maybe add an ignore statement for objects that are purchaseable
     if (itemObj?.purchase)
     {
         console.log(`skipping ${itemObj.name} due to being purchaseable`)

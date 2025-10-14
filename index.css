@@ -90,7 +90,7 @@ input:focus{
     }
 }
 
-.item-selected-details{
+.sub-item-details{
     margin-top: 1em;
     background-color: var(--blue1);
     border-radius: 1em;
