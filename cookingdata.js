@@ -29,6 +29,8 @@ export const ingredientsData = [
             {name: "Berry", percent: 20},
             {name: "Sugar", percent: 10},
             ],
+        purchase: ["Wanst"],
+        price: 550
     },
     {   
         name: "Assorted Fruits",
@@ -133,7 +135,7 @@ export const ingredientsData = [
             {name: "Leighean Gin", percent: 40},
             {name: "Ice", percent: 30},
             ],
-        purchase: ["Annick"],
+        purchase: ["Annick", "Wanst"],
         price: 4300,
     },
     {
@@ -158,7 +160,7 @@ export const ingredientsData = [
             {name: "Lemon", percent: 5},
             {name: "Ice", percent: 60},
             ],
-        purchase: ["Annick"],
+        purchase: ["Annick", "Wanst"],
         price: 3500,
     },
     {
@@ -296,7 +298,7 @@ export const ingredientsData = [
             {name: "Milk", percent: 50},
             {name: "Sugar", percent: 20},
             ],    
-        purchase: ["Fraser"]
+        purchase: ["Fraser", "Wanst"]
     },
     {
         name: "Chojang",
@@ -427,7 +429,7 @@ export const ingredientsData = [
         name: "Egg Salad",
         method: "Mix",
         ingredients: ["Hard-Boiled Egg", "Mayonnaise"],
-        purchase: ["Caitin", "Glenis", "Shena"],
+        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
         price: 2700,
         recipe: [
             {name: "Hard-Boiled Egg", percent: 75},
@@ -482,6 +484,8 @@ export const ingredientsData = [
     {
         name: "Fruit Salad",
         method: "Mix",
+        purchase: ["Lucas"],
+        price: 2750,
         ingredients: ["Assorted Fruits", "Mayonnaise"],
         recipe: [
             {name: "Assorted Fruits", percent: 83},
@@ -625,6 +629,8 @@ export const ingredientsData = [
     {
         name: "Kiss on the Lips",
         method: "Mix",
+        purchase: "Wanst",
+        price: 3500,
         ingredients: ["Brifne Whiskey", "Lemonade", "Sugar"],
         recipe: [
             {name: "Brifne Whiskey", percent: 55},
@@ -645,6 +651,8 @@ export const ingredientsData = [
     {
         name: "Leighean Sling",
         method: "Mix",
+        purchase: ["Wanst"],
+        price: 3300,
         ingredients: ["Leighean Gin", "Lemonade", "Sugar"],
         recipe: [
             {name: "Leighean Gin", percent: 19},
@@ -671,7 +679,8 @@ export const ingredientsData = [
             {name: "Berry", percent: 30},
             {name: "Sugar", percent: 10},
             ],
-        purchase: ["Fraser"]
+        purchase: ["Fraser", "Wanst"],
+        price: 550,
     },
     {
         name: "Light Salmon Salad",
@@ -807,7 +816,8 @@ export const ingredientsData = [
             {name: "Berry", percent: 18},
             {name: "Sugar", percent: 10},
             ],
-        purchase: ["Fraser", "Annick"]
+        purchase: ["Fraser", "Annick", "Wanst"],
+        price: 550,
     },
     {
         name: "Pan's Craft Brew",
@@ -852,7 +862,7 @@ export const ingredientsData = [
             {name: "Onion", percent: 23},
             {name: "Pepper", percent: 9},
             ],
-        purchase: ["Caitin", "Glenis", "Shena"],
+        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
     },
     {
         name: "Potato and Egg Salad",
@@ -863,7 +873,7 @@ export const ingredientsData = [
             {name: "Steamed Potato", percent: 53},
             {name: "Mayonnaise", percent: 11},
             ],
-        purchase: ["Caitin", "Glenis", "Gordon", "Shena"],
+        purchase: ["Caitin", "Glenis", "Gordon", "Shena", "Wanst"],
         price: 3000,
     },
     {
@@ -894,7 +904,7 @@ export const ingredientsData = [
             {name: "Orange Juice", percent: 60},
             {name: "Sugar", percent: 15},
             ],
-        purchase: ["Annick"],
+        purchase: ["Annick", "Wanst"],
         price: 3200,
     },
     {
@@ -929,6 +939,8 @@ export const ingredientsData = [
     {
         name: "Screwdriver",
         method: "Mix",
+        purchase: ["Wanst"],
+        price: 3600,
         ingredients: ["Brifne Whiskey", "Lemon", "Orange Juice"],
         recipe: [
             {name: "Brifne Whiskey", percent: 20},
@@ -1930,7 +1942,7 @@ export const ingredientsData = [
         recipeInGame: [
             {name: "Bacon", percent: 75},
             ],
-        purchase: ["Caitin", "Glenis", "Shena"],
+        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
         price: 1500,
     },
     {
@@ -1961,7 +1973,7 @@ export const ingredientsData = [
             {name: "Chicken Wings", percent: 79},
             {name: "Olive Oil", percent: 21},
             ],
-        purchase: ["Annick"],
+        purchase: ["Annick", "Lucas"],
         price: 1500,
     },
     {
@@ -2049,7 +2061,7 @@ export const ingredientsData = [
             {name: "Flour Dough", percent: 83},
             {name: "Butter", percent: 17},
             ],
-        purchase: ["Caitin", "Glenis", "Shena"],
+        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
         price: 1500,
     },
     // Check with ingame recipe
@@ -2406,7 +2418,7 @@ export const ingredientsData = [
             {name: "Barley Flour", percent: 30},
             {name: "Bottled Water", percent: 70},
             ],
-        purchase: ["Annick"],
+        purchase: ["Annick", "Wanst"],
         price: 350,
     },
     {
@@ -2417,7 +2429,7 @@ export const ingredientsData = [
             {name: "Basil", percent: 15},
             {name: "Bottled Water", percent: 85},
             ],
-        purchase: ["Annick"],
+        purchase: ["Annick", "Wanst"],
         price: 850,
     },
     {
@@ -2543,7 +2555,7 @@ export const ingredientsData = [
             {name: "Steamed Corn", percent: 30},
             {name: "Bottled Water", percent: 70},
             ],
-        purchase: ["Annick"],
+        purchase: ["Annick", "Wanst"],
         price: 4800,
     },
     {
@@ -2664,6 +2676,8 @@ export const ingredientsData = [
     {
         name: "Hot Chocolate",
         method: "Boil",
+        purchase: ["Wanst"],
+        price: 850,
         ingredients: ["Chocolate", "Steamed Milk", "Whipped Cream"],
         recipe: [
             {name: "Chocolate", percent: 70},
@@ -2721,7 +2735,8 @@ export const ingredientsData = [
             {name: "Bottled Water", percent: 85},
             {name: "Sugar", percent: 5},
             ],
-        purchase: ["Annick"]
+        purchase: ["Annick", "Wanst"],
+        price: 650,
     },
     {
         name: "Lipai Tea",
@@ -3081,7 +3096,7 @@ export const ingredientsData = [
             {name: "Milk", percent: 90},
             {name: "Bottled Water", percent: 10},
             ],
-        purchase: ["Annick"],
+        purchase: ["Annick", "Wanst"],
         price: 450,
     },
     {
@@ -3092,7 +3107,7 @@ export const ingredientsData = [
             {name: "Rice", percent: 60},
             {name: "Bottled Water", percent: 40},
             ],
-        purchase: ["Caitin", "Glenis", "Gordon", "Shena"],
+        purchase: ["Caitin", "Glenis", "Gordon", "Shena", "Wanst"],
         price: 1650,
     },
     {
@@ -3124,7 +3139,7 @@ export const ingredientsData = [
             {name: "Thyme", percent: 90},
             {name: "Bottled Water", percent: 10},
             ],
-        purchase: ["Annick"],
+        purchase: ["Annick", "Wanst"],
         price: 950,
     },
     {
@@ -4119,7 +4134,7 @@ export const ingredientsData = [
             {name: "Whipped Cream", percent: 41},
             {name: "Sugar", percent: 17},
             ],
-        purchase: ["Caitin", "Glenis", "Shena"],
+        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
         price: 100,
     },
     // probably check ingame
@@ -5313,23 +5328,23 @@ export const ingredientsData = [
 
     {
         name: "Bacon",
-        purchase: ["Caitin", "Glenis", "Shena"],
+        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
         price: 75,
     },
     {
         name: "Baking Chocolate",
-        purchase: ["Caitin", "Glenis", "Shena"],
+        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
         price: 10,
     },
     {
         name: "Basil",
         description: "Spices typically used in southern cuisine. Not edible as is.",
-        purchase: ["Caitin","Glenis", "Shena"],
+        purchase: ["Caitin","Glenis", "Shena", "Wanst"],
         price: 8,
     },
     {
         name: "Beef",
-        purchase: ["Caitin", "Glenis", "Shena"],
+        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
         price: 1500,
     },
     {
@@ -5342,210 +5357,210 @@ export const ingredientsData = [
     },
     {
         name: "Block of Cheese",
-        purchase: ["Caitin", "Glenis", "Jennifer", "Shena"],
+        purchase: ["Caitin", "Glenis", "Jennifer", "Shena", "Wanst"],
         price: 480,
     },
     {
         name: "Bread",
-        purchase: ["Caitin", "Glenis", "Jennifer", "Shena"],
+        purchase: ["Caitin", "Glenis", "Jennifer", "Shena", "Wanst"],
         price: 56,
     },
     {
         name: "Butter",
-        purchase: ["Caitin", "Glenis", "Shena"],
+        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
         price: 15,
     },
     {
         name: "Button Mushroom",
-        purchase: ["Caitin", "Glenis", "Shena"],
+        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
         price: 30,
     },
     {
         name: "Cabbage",
-        purchase: ["Caitin", "Glenis", "Shena"],
+        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
         price: 30,
     },
     {
         name: "Camellia Seed",
-        purchase: ["Caitin", "Glenis", "Shena"],
+        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
         price: 200,
     },
     {
         name: "Carrot",
-        purchase: ["Glenis", "Shena"],
+        purchase: ["Glenis", "Shena", "Wanst"],
         price: 10,
     },
     {
         name: "Celery",
-        purchase: ["Caitin", "Glenis", "Shena"],
+        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
         price: 125,
     },
     {
         name: "Chicken Wings",
-        purchase: ["Caitin", "Glenis", "Shena"],
+        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
         price: 20,
     },
     {
         name: "Cornmeal",
-        purchase: ["Caitin", "Glenis", "Shena"],
+        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
         price: 80,
     },
     {
         name: "Cucumber",
-        purchase: ["Caitin", "Glenis", "Shena"],
+        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
         price: 20,
     },
     {
         name: "Curry Powder",
-        purchase: ["Caitin", "Glenis", "Shena"],
+        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
         price: 20,
     },
     {
         name: "Deep Fry Batter",
-        purchase: ["Caitin", "Glenis", "Shena"],
+        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
         price: 10,
     },
     {
         name: "Garlic",
-        purchase: ["Caitin", "Glenis", "Shena"],
+        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
         price: 10,
     },
     {
         name: "Grapes",
-        purchase: ["Caitin", "Glenis", "Shena"],
+        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
         price: 80,
     },
     {
         name: "Juniper Berry",
-        purchase: ["Caitin", "Glenis", "Shena"],
+        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
         price: 250,
     },
     {
         name: "Large Meat",
-        purchase: ["Caitin", "Glenis", "Jennifer", "Shena"],
+        purchase: ["Caitin", "Glenis", "Jennifer", "Shena", "Wanst"],
         price: 450,
     },
     {
         name: "Lemon",
-        purchase: ["Caitin", "Glenis", "Shena"],
+        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
         price: 35,
     },
     {
         name: "Mint",
-        purchase: ["Caitin", "Glenis", "Shena"],
+        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
         price: 20,
     },
     {
         name: "Napa Cabbage",
-        purchase: ["Caitin", "Glenis", "Shena"],
+        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
         price: 20,
     },
     {
         name: "Olive Oil",
-        purchase: ["Caitin", "Glenis", "Shena"],
+        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
         price: 30,
     },
     {
         name: "Onion",
-        purchase: ["Caitin", "Glenis", "Shena"],
+        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
         price: 15,
     },
     
     {
         name: "Orange",
-        purchase: ["Caitin", "Glenis", "Shena"],
+        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
         price: 35,
     },
     {
         name: "Peanuts",
-        purchase: ["Caitin", "Glenis", "Shena"],
+        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
         price: 50,
     },
     {
         name: "Pecan",
-        purchase: ["Caitin", "Glenis", "Shena"],
+        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
         price: 50,
     },
     {
         name: "Pepper",
-        purchase: ["Caitin", "Glenis", "Shena"],
+        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
         price: 10,
     },
     {
         name: "Pine Nut",
-        purchase: ["Caitin", "Glenis", "Shena"],
+        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
         price: 200,
     },
     {
         name: "Red Pepper Powder",
-        purchase: ["Caitin", "Glenis", "Shena"],
+        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
         price: 20,
     },
     {
         name: "Rice",
-        purchase: ["Caitin", "Glenis", "Shena"],
+        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
         price: 30,
     },
     {
         name: "Ripe Pumpkin",
-        purchase: ["Caitin", "Glenis", "Shena"],
+        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
         price: 100,
     },
     {
         name: "Salt",
-        purchase: ["Caitin", "Glenis", "Shena"],
+        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
         price: 10,
     },
     {
         name: "Shrimp",
-        purchase: ["Caitin", "Glenis", "Shena", "Cadoc"],
+        purchase: ["Caitin", "Glenis", "Shena", "Cadoc", "Wanst"],
         price: 10,
         //  Shrimp is 750g at Cadoc
     },
     {
         name: "Slice of Cheese",
-        purchase: ["Caitin", "Glenis", "Jennifer", "Shena"],
+        purchase: ["Caitin", "Glenis", "Jennifer", "Shena", "Wanst"],
         price: 80,
     },
     
     {
         name: "Sliced Meat",
-        purchase: ["Caitin", "Glenis", "Jennifer", "Shena"],
+        purchase: ["Caitin", "Glenis", "Jennifer", "Shena", "Wanst"],
         price: 125,
     },
     {
         name: "Strawberry",
-        purchase: ["Caitin", "Glenis", "Shena"],
+        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
         price: 15,
     },
     {
         name: "Sugar",
-        purchase: ["Caitin", "Glenis", "Shena"],
+        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
         price: 10,
     },
     {
         name: "Tea Leaves",
-        purchase: ["Caitin", "Glenis", "Shena"],
+        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
         price: 20,
     },
     {
         name: "Thyme",
-        purchase: ["Caitin", "Glenis", "Shena"],
+        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
         price: 35,
     },
     {
         name: "Tomato",
-        purchase: ["Caitin", "Glenis", "Shena"],
+        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
         price: 9,
     },
     {
         name: "Whipped Cream",
-        purchase: ["Caitin", "Glenis", "Shena"],
+        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
         price: 20,
     },
     {
         name: "Yeast",
-        purchase: ["Caitin", "Glenis", "Shena"],   
+        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],   
         price: 10,
     },
     {
@@ -5618,22 +5633,22 @@ export const ingredientsData = [
     },
     {
         name: "Devenish Stout",
-        purchase: ["Annick"],
+        purchase: ["Annick", "Wanst", "Lucas"],
         price: 1500,
     },
     {
         name: "Emain Macha Wine",
-        purchase: ["Annick"],
+        purchase: ["Annick", "Wanst", "Lucas"],
         price: 1800,
     },
     {
         name: "Ice",
-        purchase: ["Annick"],
+        purchase: ["Annick", "Lucas"],
         price: 40,
     },
     {
         name: "Leighean Gin",
-        purchase: ["Annick"],
+        purchase: ["Annick", "Wanst", "Lucas"],
         price: 2000,
     },
     {
@@ -5652,6 +5667,16 @@ export const ingredientsData = [
         name: "Bottled Water",
         method: "Gathering",
         drop: {gathering: ["Equip an Empty Bottle and left-click on a well or a body of water"]},
+    },
+    {
+        name: "Brifne Whiskey",
+        purchase: ["Wanst", "Lucas"],
+        price: 2200,
+    },
+    {
+        name: "Vales Whiskey",
+        purchase: ["Wanst"],
+        price: 1100,
     }
     
 ]
