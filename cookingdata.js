@@ -429,7 +429,7 @@ export const ingredientsData = [
         name: "Egg Salad",
         method: "Mix",
         ingredients: ["Hard-Boiled Egg", "Mayonnaise"],
-        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
+        purchase: ["Caitin", "Glenis", "Shena", "Pierrick", "Wanst"],
         price: 2700,
         recipe: [
             {name: "Hard-Boiled Egg", percent: 75},
@@ -862,7 +862,7 @@ export const ingredientsData = [
             {name: "Onion", percent: 23},
             {name: "Pepper", percent: 9},
             ],
-        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
+        purchase: ["Caitin", "Glenis", "Shena", "Pierrick", "Wanst"],
     },
     {
         name: "Potato and Egg Salad",
@@ -873,7 +873,7 @@ export const ingredientsData = [
             {name: "Steamed Potato", percent: 53},
             {name: "Mayonnaise", percent: 11},
             ],
-        purchase: ["Caitin", "Glenis", "Gordon", "Shena", "Wanst"],
+        purchase: ["Caitin", "Glenis", "Gordon", "Shena", "Pierrick", "Wanst"],
         price: 3000,
     },
     {
@@ -1942,7 +1942,7 @@ export const ingredientsData = [
         recipeInGame: [
             {name: "Bacon", percent: 75},
             ],
-        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
+        purchase: ["Caitin", "Glenis", "Shena", "Pierrick", "Wanst"],
         price: 1500,
     },
     {
@@ -2061,7 +2061,7 @@ export const ingredientsData = [
             {name: "Flour Dough", percent: 83},
             {name: "Butter", percent: 17},
             ],
-        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
+        purchase: ["Caitin", "Glenis", "Shena", "Pierrick", "Wanst"],
         price: 1500,
     },
     // Check with ingame recipe
@@ -3107,7 +3107,7 @@ export const ingredientsData = [
             {name: "Rice", percent: 60},
             {name: "Bottled Water", percent: 40},
             ],
-        purchase: ["Caitin", "Glenis", "Gordon", "Shena", "Wanst"],
+        purchase: ["Caitin", "Glenis", "Gordon", "Shena", "Pierrick", "Wanst"],
         price: 1650,
     },
     {
@@ -4134,7 +4134,7 @@ export const ingredientsData = [
             {name: "Whipped Cream", percent: 41},
             {name: "Sugar", percent: 17},
             ],
-        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
+        purchase: ["Caitin", "Glenis", "Shena", "Pierrick", "Wanst"],
         price: 100,
     },
     // probably check ingame
@@ -5328,23 +5328,23 @@ export const ingredientsData = [
 
     {
         name: "Bacon",
-        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
+        purchase: ["Caitin", "Glenis", "Shena", "Wanst", "Pierrick"],
         price: 75,
     },
     {
         name: "Baking Chocolate",
-        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
+        purchase: ["Caitin", "Glenis", "Shena", "Pierrick", "Wanst"],
         price: 10,
     },
     {
         name: "Basil",
         description: "Spices typically used in southern cuisine. Not edible as is.",
-        purchase: ["Caitin","Glenis", "Shena", "Wanst"],
+        purchase: ["Caitin","Glenis", "Shena", "Pierrick", "Wanst"],
         price: 8,
     },
     {
         name: "Beef",
-        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
+        purchase: ["Caitin", "Glenis", "Shena", "Pierrick", "Wanst"],
         price: 1500,
     },
     {
@@ -5357,268 +5357,208 @@ export const ingredientsData = [
     },
     {
         name: "Block of Cheese",
-        purchase: ["Caitin", "Glenis", "Jennifer", "Shena", "Wanst"],
+        purchase: ["Caitin", "Glenis", "Jennifer", "Shena", "Pierrick", "Wanst"],
         price: 480,
     },
     {
         name: "Bread",
-        purchase: ["Caitin", "Glenis", "Jennifer", "Shena", "Wanst"],
+        purchase: ["Caitin", "Glenis", "Jennifer", "Shena", "Pierrick", "Wanst"],
         price: 56,
     },
     {
         name: "Butter",
-        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
+        purchase: ["Caitin", "Glenis", "Shena", "Pierrick", "Wanst"],
         price: 15,
     },
     {
         name: "Button Mushroom",
-        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
+        purchase: ["Caitin", "Glenis", "Shena", "Pierrick", "Wanst"],
         price: 30,
     },
     {
         name: "Cabbage",
-        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
+        purchase: ["Caitin", "Glenis", "Shena", "Pierrick", "Wanst"],
         price: 30,
     },
     {
         name: "Camellia Seed",
-        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
+        purchase: ["Caitin", "Glenis", "Shena", "Pierrick", "Wanst"],
         price: 200,
     },
     {
         name: "Carrot",
-        purchase: ["Glenis", "Shena", "Wanst"],
+        purchase: ["Glenis", "Shena", "Pierrick", "Wanst"],
         price: 10,
     },
     {
         name: "Celery",
-        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
+        purchase: ["Caitin", "Glenis", "Shena", "Pierrick", "Wanst"],
         price: 125,
     },
     {
         name: "Chicken Wings",
-        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
+        purchase: ["Caitin", "Glenis", "Shena", "Pierrick", "Wanst"],
         price: 20,
     },
     {
         name: "Cornmeal",
-        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
+        purchase: ["Caitin", "Glenis", "Shena", "Pierrick", "Wanst"],
         price: 80,
     },
     {
         name: "Cucumber",
-        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
+        purchase: ["Caitin", "Glenis", "Shena", "Pierrick", "Wanst"],
         price: 20,
     },
     {
         name: "Curry Powder",
-        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
+        purchase: ["Caitin", "Glenis", "Shena", "Pierrick", "Wanst"],
         price: 20,
     },
     {
         name: "Deep Fry Batter",
-        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
+        purchase: ["Caitin", "Glenis", "Shena", "Pierrick", "Wanst"],
         price: 10,
     },
     {
         name: "Garlic",
-        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
+        purchase: ["Caitin", "Glenis", "Shena", "Pierrick", "Wanst"],
         price: 10,
     },
     {
         name: "Grapes",
-        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
+        purchase: ["Caitin", "Glenis", "Shena", "Pierrick", "Wanst"],
         price: 80,
     },
     {
         name: "Juniper Berry",
-        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
+        purchase: ["Caitin", "Glenis", "Shena", "Pierrick", "Wanst"],
         price: 250,
     },
     {
         name: "Large Meat",
-        purchase: ["Caitin", "Glenis", "Jennifer", "Shena", "Wanst"],
+        purchase: ["Caitin", "Glenis", "Jennifer", "Shena", "Pierrick", "Wanst"],
         price: 450,
     },
     {
         name: "Lemon",
-        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
+        purchase: ["Caitin", "Glenis", "Shena", "Pierrick", "Wanst"],
         price: 35,
     },
     {
         name: "Mint",
-        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
+        purchase: ["Caitin", "Glenis", "Shena", "Pierrick", "Wanst"],
         price: 20,
     },
     {
         name: "Napa Cabbage",
-        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
+        purchase: ["Caitin", "Glenis", "Shena", "Pierrick", "Wanst"],
         price: 20,
     },
     {
         name: "Olive Oil",
-        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
+        purchase: ["Caitin", "Glenis", "Shena", "Pierrick", "Wanst"],
         price: 30,
     },
     {
         name: "Onion",
-        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
+        purchase: ["Caitin", "Glenis", "Shena", "Pierrick", "Wanst"],
         price: 15,
     },
     
     {
         name: "Orange",
-        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
+        purchase: ["Caitin", "Glenis", "Shena", "Pierrick", "Wanst"],
         price: 35,
     },
     {
         name: "Peanuts",
-        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
+        purchase: ["Caitin", "Glenis", "Shena", "Pierrick", "Wanst"],
         price: 50,
     },
     {
         name: "Pecan",
-        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
+        purchase: ["Caitin", "Glenis", "Shena", "Pierrick", "Wanst"],
         price: 50,
     },
     {
         name: "Pepper",
-        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
+        purchase: ["Caitin", "Glenis", "Shena", "Pierrick", "Wanst"],
         price: 10,
     },
     {
         name: "Pine Nut",
-        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
+        purchase: ["Caitin", "Glenis", "Shena", "Pierrick", "Wanst"],
         price: 200,
     },
     {
         name: "Red Pepper Powder",
-        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
+        purchase: ["Caitin", "Glenis", "Shena", "Pierrick", "Wanst"],
         price: 20,
     },
     {
         name: "Rice",
-        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
+        purchase: ["Caitin", "Glenis", "Shena", "Pierrick", "Wanst"],
         price: 30,
     },
     {
         name: "Ripe Pumpkin",
-        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
+        purchase: ["Caitin", "Glenis", "Shena", "Pierrick", "Wanst"],
         price: 100,
     },
     {
         name: "Salt",
-        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
+        purchase: ["Caitin", "Glenis", "Shena", "Pierrick", "Wanst"],
         price: 10,
     },
-    {
-        name: "Shrimp",
-        purchase: ["Caitin", "Glenis", "Shena", "Cadoc", "Wanst"],
-        price: 10,
-        //  Shrimp is 750g at Cadoc
-    },
+
     {
         name: "Slice of Cheese",
-        purchase: ["Caitin", "Glenis", "Jennifer", "Shena", "Wanst"],
+        purchase: ["Caitin", "Glenis", "Jennifer", "Shena", "Pierrick", "Wanst"],
         price: 80,
     },
     
     {
         name: "Sliced Meat",
-        purchase: ["Caitin", "Glenis", "Jennifer", "Shena", "Wanst"],
+        purchase: ["Caitin", "Glenis", "Jennifer", "Shena", "Pierrick", "Wanst"],
         price: 125,
     },
     {
         name: "Strawberry",
-        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
+        purchase: ["Caitin", "Glenis", "Shena", "Pierrick", "Wanst"],
         price: 15,
     },
     {
         name: "Sugar",
-        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
+        purchase: ["Caitin", "Glenis", "Shena", "Pierrick", "Wanst"],
         price: 10,
     },
     {
         name: "Tea Leaves",
-        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
+        purchase: ["Caitin", "Glenis", "Shena", "Pierrick", "Wanst"],
         price: 20,
     },
     {
         name: "Thyme",
-        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
+        purchase: ["Caitin", "Glenis", "Shena", "Pierrick", "Wanst"],
         price: 35,
     },
     {
         name: "Tomato",
-        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
+        purchase: ["Caitin", "Glenis", "Shena", "Pierrick", "Wanst"],
         price: 9,
     },
     {
         name: "Whipped Cream",
-        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],
+        purchase: ["Caitin", "Glenis", "Shena", "Pierrick", "Wanst"],
         price: 20,
     },
     {
         name: "Yeast",
-        purchase: ["Caitin", "Glenis", "Shena", "Wanst"],   
+        purchase: ["Caitin", "Glenis", "Shena", "Pierrick", "Wanst"],   
         price: 10,
     },
-    {
-        name: "Black Sea Bream",
-        purchase: ["Cadoc"],   
-        price: 3420,
-    },
-    {
-        name: "Blowfish",
-        purchase: ["Cadoc"],   
-        price: 4760,
-    },
-    {
-        name: "Flying Fish",
-        purchase: ["Cadoc"],   
-        price: 2810,
-    },
-    {
-        name: "Golden Scale Fish",
-        purchase: ["Cadoc"],   
-        price: 1550,
-    },
-    {
-        name: "Jellyfish",
-        purchase: ["Cadoc"],   
-        price: 150,
-    },
-    {
-        name: "King Crab",
-        purchase: ["Cadoc"],   
-        
-        price: 8530,
-    },
-    {
-        name: "Marine Pearl Oyster",
-        purchase: ["Cadoc"],   
-        price: 7210,
-    },
-    {
-        name: "Red Sea Bream",
-        purchase: ["Cadoc"],   
-        price: 6190,
-    },
-    {
-        name: "Shellfish",
-        purchase: ["Cadoc"],   
-        price: 410
-    },
-    {
-        name: "Sturgeon",
-        purchase: ["Cadoc"],   
-        price: 9140,
-    },
-    {
-        name: "Taitinn Carp",
-        purchase: ["Cadoc"],   
-        price: 950,
-    },
+
     {
         name: "Fresh Honey"
     },
@@ -5677,8 +5617,166 @@ export const ingredientsData = [
         name: "Vales Whiskey",
         purchase: ["Wanst"],
         price: 1100,
+    },
+
+    {
+        name: "Taitinn Carp",
+        purchase: ["Cadoc"],   
+        price: 950,
+        fishing: ["Tir Chonaill", "Emain Macha", "Ceo Island", "Dugald Marketplace", "Sen Mag Marketplace", "Scathach Beach"],
+    },
+    {
+        name: "Sweetfish",
+        fishing: ["Abb Neagh. Abb Neagh Castle, Scathach Beach, Cuilin Castle"]
+    },
+    {
+        name: "Shrimp",
+        purchase: ["Caitin", "Glenis", "Shena", "Pierrick", "Cadoc", "Wanst"],
+        price: 10,
+        fishing: ["Port Ceann"]
+        //  Shrimp is 750g at Cadoc
+    },
+    {
+        name: "Shellfish",
+        purchase: ["Cadoc"],   
+        price: 410,
+        fishing: ["Port Ceann", "Port Qilla"]
+    },
+    {
+        name: "Smelt",
+        fishing: ["Reus River"]
+    },
+    {
+        name: "Brifne Carp",
+        fishing: ["Tir Chonaill", "Dugald Castle", "Sen Mag Castle"]
+    },
+    {
+        name: "Golden Scale Fish",
+        purchase: ["Cadoc"],   
+        price: 1550,
+        fishing: ["Emain Macha", "Ceo Island", "Belvast Island"]
+    },
+    {
+        name: "Rainbow Trout",
+        fishing: ["Emain Macha", "Belvast Island", "Scathach Beach"]
+    },
+    {
+        name: "Abb Neagh Carp",
+        fishing: ["Abb Neagh", "Abb Neagh Castle", "Cuilin Castle"]
+    },
+    {
+        name: "Catfish",
+        fishing: ["Abb Neagh", "Abb Neagh Castle", "Cuilin Castle"]
+    },
+    {
+        name: "Blowfish",
+        purchase: ["Cadoc"],   
+        price: 4760,
+        fishing: ["Port Cobh"]
+    },
+    {
+        name: "Black Sea Bream",
+        purchase: ["Cadoc"],   
+        price: 3420,
+        fishing: ["Port Cobh"]
+    },
+    {
+        name: "Red Sea Bream",
+        purchase: ["Cadoc"],   
+        price: 6190,
+        fishing: ["Port Cobh"]
+    },
+    {
+        name: "Mako Shark",
+        fishing: ["Port Cobh"]
+    },
+    {
+        name: "Silk-Striped Marlin",
+        fishing: ["Port Ceann"]
+    },
+    {
+        name: "Angler Fish",
+        fishing: ["Fishing Boat", "Commonwealth of Belvast", "Beach of Scathach", "Scuabtuinne", "Doki Doki Island"]
+    },
+    {
+        name: "Flying Fish",
+        purchase: ["Cadoc"],   
+        price: 2810,
+        fishing: ["Fishing Boat", "CommonWealth of Belvast", "Beach of Scathach", "Scuabtuinne", "Doki Doki Island"]
+    },
+    {
+        name: "Jellyfish",
+        purchase: ["Cadoc"],   
+        price: 150,
+        fishing: ["Fishing Boat", "Port Ceann", "Belvast Island", "Scathach Beach", "Doki Doki Island"]
+    },
+    {
+        name: "King Crab",
+        purchase: ["Cadoc"],   
+        
+        price: 8530,
+        fishing: ["Fishing Boat", "Commonwealth of Belvast", "Scathach Beach", "Doki Doki Island"]
+    },
+    {
+        name: "Marine Pearl Oyster",
+        purchase: ["Cadoc"],   
+        price: 7210,
+        fishing: ["Fishing Boat", "Desert Sweamp", "Doki Doki Island"]
+    },
+    {
+        name: "Striped Marlin",
+        fishing: ["Fishing Boat", "Port Cobh", "Commonwealth of Belvast", "Scathach Beach", "Scuabtuinne", "Doki Doki Island"]
+    },
+    {
+        name: "Sunfish",
+        fishing: ["Fishing Boat", "Commonwealth of Belvast", "Scathach Beach", "Doki Doki Island"]
+    },
+    {
+        name: "Ray",
+        fishing: ["Fishing Boat", "Commonwealth of Belvast", "Scathach Beach", "Scuabtuinne", "Doki Doki Island"]
+    },
+    {
+        name: "Sturgeon",
+        purchase: ["Cadoc"],   
+        price: 9140,
+        fishing: ["Reus River"]
+    },
+    {
+        name: "Lamprey",
+        fishing: ["Reus River"]
+    },
+    {
+        name: "Carnivorous Fish",
+        fishing: ["Abb Neagh", "Tir Chonaill", "Uladh Homestead"]
+    },
+    {
+        name: "Reef Lobster",
+        fishing: ["Commonwealth of Belvast", "Scathach Beach"]
+    },
+    {
+        name: "Mackerel",
+        fishing: ["Commonwealth of Belvast", "Scathach Beach"]
+    },
+    {
+        name: "Belvast Eel",
+        fishing: ["Commonwealth of Belvast", "Scathach Beach"]
+    },
+    {
+        name: "Beltfish",
+        fishing: ["Commonwealth of Belvast", "Scathach Beach"]
+    },
+    {
+        name: "Herring",
+        fishing: ["Fishing Boat", "Port Cobh", "Scuabtuinne"]
+    },
+    {
+        name: "Yellowfin Tuna",
+        fishing: ["Fishing Boat", "Desert Swamp", "Scuabtuinne"]
+    },
+    {
+        name: "Rano Salmon",
+        fishing: ["Fishing Boat", "Scuabtuinne"]
     }
-    
 ]
 
 // Updated all from caitinn on 2025-07-30
