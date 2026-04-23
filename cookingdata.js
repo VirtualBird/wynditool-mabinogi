@@ -5322,7 +5322,112 @@ export const ingredientsData = [
         ]
     },
 
-
+//  Ingredient Hunting
+    {
+        name: "Almond",
+        ingredientHunting: true,
+    },
+    {
+        name: "Bell Pepper",
+        ingredientHunting: true,
+    },
+    {
+        name: "Blueberry",
+        ingredientHunting: true,
+    },
+    {
+        name: "Chestnut",
+        ingredientHunting: true,
+    },
+    {
+        name: "Chicken",
+        ingredientHunting: true,
+    },
+    {
+        name: "Eggplant",
+        ingredientHunting: true,
+    },
+    {
+        name: "Fan Mussel",
+        ingredientHunting: true,
+    },
+    {
+        name: "Gelatin",
+        ingredientHunting: true,
+    },
+    {
+        name: "Green Plum",
+        ingredientHunting: true,
+    },
+    {
+        name: "Hat Cookie Cutter",
+        ingredientHunting: true,
+    },
+    {
+        name: "Leek",
+        ingredientHunting: true,
+    },
+    {
+        name: "Malt",
+        ingredientHunting: true,
+    },
+    {
+        name: "Mung Bean",
+        ingredientHunting: true,
+    },
+    {
+        name: "Octopus",
+        itemDescription: "A mollusk with 8 legs. Easy for some people to mistake it as a monster. Don't be fooled, it's actually chewy and delicious.",
+        ingredientHunting: true,
+    },
+    {
+        name: "Owl Cookie Cutter",
+        ingredientHunting: true,
+    },
+    {
+        name: "Pineapple",
+        ingredientHunting: true,
+    },
+    {
+        name: "Poulp",
+        ingredientHunting: true,
+    },
+    {
+        name: "Scallop",
+        ingredientHunting: true,
+    },
+    {
+        name: "Soy Sauce",
+        ingredientHunting: true,
+    },
+    {
+        name: "Spicy Pepper",
+        ingredientHunting: true,
+    },
+    {
+        name: "Star Cookie Cutter",
+        ingredientHunting: true,
+    },
+    {
+        name: "Sweet Potato",
+        ingredientHunting: true,
+    },
+    {
+        name: "Sweet Pumpkin",
+        ingredientHunting: true,
+    },
+    {
+        name: "Turkey",
+        ingredientHunting: true,
+    },
+    {
+        name: "Walnut",
+        ingredientHunting: true,
+    },
+    {
+        name: "White Truffle",
+        ingredientHunting: true,
+    },
 
 //  Misc items
 
@@ -5338,7 +5443,7 @@ export const ingredientsData = [
     },
     {
         name: "Basil",
-        description: "Spices typically used in southern cuisine. Not edible as is.",
+        itemDescription: "Spices typically used in southern cuisine. Not edible as is.",
         purchase: ["Caitin","Glenis", "Shena", "Pierrick", "Wanst"],
         price: 8,
     },
@@ -5350,10 +5455,6 @@ export const ingredientsData = [
     {
         name: "Berry",
         drop: "Hit a bush or berry tree",
-    },
-    {
-        name: "Belvast Eel",
-        drop: {fishing: ["Commonwealth of Belvast","Beach of Scathach"]},
     },
     {
         name: "Block of Cheese",
@@ -5514,8 +5615,10 @@ export const ingredientsData = [
 
     {
         name: "Slice of Cheese",
+        itemDescription: "A small chunk of cheese. Perfectly edible. Press 'Ctrl + K' to automatically eat food in your inventory, starting from the bottom right.",
         purchase: ["Caitin", "Glenis", "Jennifer", "Shena", "Pierrick", "Wanst"],
         price: 80,
+        maximumStackSize: 20,
     },
     
     {

@@ -295,6 +295,22 @@ function getDetailsHTML()
                             </div>`
         }
 
+        if (itemObj?.ingredientHunting)
+        {
+            detailsHTML += `
+                            <div>
+                            <p>Drops from Ingredient Hunting</p>
+                            </div>`
+        }
+
+        if (itemObj?.fishing)
+        {
+            detailsHTML += `<p>Fishing Location</p>`
+            detailsHTML += itemObj.fishing.map(function(fishingLocation){
+                return `<li>${fishingLocation}</li>`
+            }).join('')
+        }
+
         //  Display Nested Ingredients
         const nestedIngredientsObj = getNestedIngredients(itemObj)
         const itemNestedIngredientsListEl = document.getElementById("item-nested-ingredients-list")
@@ -418,6 +434,22 @@ function displaySelectedItem(itemName)
                 }).join('')
                 displayHtml += `</ul>`
             }
+        }
+
+        if (itemObj?.fishing)
+        {
+            displayHtml += `<p>Fishing Location</p>`
+            displayHtml += itemObj.fishing.map(function(fishingLocation){
+                return `<li>${fishingLocation}</li>`
+            }).join('')
+        }
+
+        if (itemObj?.ingredientHunting)
+        {
+            displayHtml += `
+                            <div>
+                            <p>Drops from Ingredient Hunting</p>
+                            </div>`
         }
 
         if (!itemObj)
